@@ -1,4 +1,7 @@
 import Challenge from Challenge
 
 class PasswordChallenge(Challenge):
-    pass
+    def parseInput(self, testcase):
+        return {
+            
+        }
