@@ -13,14 +13,16 @@ module.exports = class Challenge {
     }
 
     readInput(file_name) {
-        const file = fs.readFileSync(`./${this.constructor.name}/inputs/${file_name}`, 'utf-8').split('\n\n')
+        let file = fs.readFileSync(`./${this.constructor.name}/inputs/${file_name}`, 'utf-8').split('\n')
 
         const tests = {data: [], total: file.splice(0, 1)[0]}
 
-        for(let lines of file) {
+        let parsed_file = []
 
-        tests.data.push(this.parseInput(lines.split('\n')))
+        // console.log(this.testcase_length)
 
+        for(let i = 0; i < file.length; i = i+this.testcase_length) {
+            tests.data.push(this.parseInput(file.slice(i, i+this.testcase_length)))
         }
 
         this.tests = tests
